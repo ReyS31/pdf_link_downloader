@@ -1,10 +1,13 @@
 {
-  "name": "pdf_function",
-  "main": "index.js",
-  "version": "0.0.1",
+  "name": "de",
+  "type": "module",
+  "scripts": {
+    "start": "bun run main.ts",
+    "typecheck": "tsc"
+  },
   "description": "Download pdf from url",
   "devDependencies": {
-    "@types/bun": "latest",
+    "@types/bun": "1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
@@ -15,7 +18,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "express": "^4.19.2",
+    "elysia": "1",
     "puppeteer": "^22.6.1"
   },
   "engines": {
