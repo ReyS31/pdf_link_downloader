@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "start": "bun run main.ts",
+    "dev": "bun run --watch main.ts",
     "typecheck": "tsc"
   },
   "description": "Download pdf from url",

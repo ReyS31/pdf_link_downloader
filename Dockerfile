@@ -1,28 +1,17 @@
-FROM node:20.11-slim
+FROM oven/bun
 
-# server configuration
-ENV NODE_ENV "development"
-ENV HOST "0.0.0.0"
-ENV PORT 5000
+WORKDIR /app
 
-ARG PORT PORT
-ARG HOST HOST
-ARG PORT PORT
+COPY package.json .
+COPY bun.lockb .
 
-# Create app directory
-WORKDIR /usr/src/app
+RUN bun install --production
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+COPY src src
+COPY tsconfig.json .
+# COPY public public
 
-RUN npm install
-# If you are building your code for production
-RUN npm ci --omit=dev
+ENV NODE_ENV production
+CMD ["bun", "main.ts"]
 
-# Bundle app source
-COPY . .
-
-EXPOSE $PORT
-CMD [ "node", "./src/server.js" ]
+EXPOSE 3000
